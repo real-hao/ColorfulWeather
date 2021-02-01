@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MainActivityTheme" parent="Theme.ColorfulWeather">
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+
+    <style name="PopupWindow_anim_style">
+
+        <item name="android:windowEnterAnimation">@anim/popup_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/popup_hidden_anim</item>
+
+    </style>
+
+</resources>
