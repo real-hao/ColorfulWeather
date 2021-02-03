@@ -45,9 +45,9 @@ public class WeatherMoreItemLayout extends RelativeLayout {
                             today_day.setText("后天 · ");
                             break;
                     }
-                today_text.setText(weatherBean.getText());
+                today_text.setText(weatherBean.getTextDay().equals(weatherBean.getTextNight()) ? weatherBean.getTextDay() : weatherBean.getTextDay()+"转"+weatherBean.getTextNight());
                 today_temp.setText(weatherBean.getTempMax()+"°/"+weatherBean.getTempMin()+"°");
-                today_icon.setImageResource(DrawableResource.getTextResource(weatherBean.getText()).getIcon());
+                today_icon.setImageResource(DrawableResource.getTextResource(weatherBean.getTextDay()).getIcon());
                 break;
             }
         }

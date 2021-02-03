@@ -1,11 +1,11 @@
 package com.example.colorfulweather.WeatherMore;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,18 +18,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.colorfulweather.R;
 import com.example.colorfulweather.Resource.WeatherBean;
 import com.example.colorfulweather.Resource.WeatherHourly;
-import com.example.colorfulweather.WeatherAir.AirContextActivity;
-import com.example.colorfulweather.WeatherDays.DaysContextActivity;
-import com.example.colorfulweather.WeatherRainfall.RainfallActivity;
 import com.qweather.sdk.bean.weather.WeatherHourlyBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoreLayout extends LinearLayout {
+public class MoreLayout extends LinearLayout{
     private static final int UPDATE_UI = 0;
     private TextView air;
     private TextView drop;
+    private Button button;
     private WeatherMoreItemLayout[] days;
     private RecyclerView recyclerView;
     private List<WeatherHourly> weatherHourlies;
@@ -50,18 +48,9 @@ public class MoreLayout extends LinearLayout {
     public MoreLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.weather_more_layout, this);
-        Button button = findViewById(R.id.btn);
-        button.setOnClickListener(v -> {
-            getContext().startActivity(new Intent(getContext(), DaysContextActivity.class));
-        });
+        button = findViewById(R.id.btn);
         air = findViewById(R.id.air);
-        air.setOnClickListener(v -> {
-            getContext().startActivity(new Intent(getContext(), AirContextActivity.class));
-        });
         drop = findViewById(R.id.drop);
-        drop.setOnClickListener(v -> {
-            getContext().startActivity(new Intent(getContext(), RainfallActivity.class));
-        });
         days = new WeatherMoreItemLayout[] {findViewById(R.id.today), findViewById(R.id.tom), findViewById(R.id.atom), };
         recyclerView = findViewById(R.id.hourly);
         LinearLayoutManager manager = new LinearLayoutManager(context);
@@ -70,6 +59,12 @@ public class MoreLayout extends LinearLayout {
         weatherHourlies = new ArrayList<>();
         adapter = new WeatherHourlyAdapter(weatherHourlies);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void setMyOnClickListener(View.OnClickListener listener){
+        button.setOnClickListener(listener);
+        air.setOnClickListener(listener);
+        drop.setOnClickListener(listener);
     }
 
     public void updateDays(List<WeatherBean> weatherList){

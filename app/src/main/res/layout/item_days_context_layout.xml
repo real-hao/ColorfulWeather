@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/day_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/day_textDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_700"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/day_windScaleDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/teal_700"/>
+
+    <ImageView
+        android:id="@+id/day_iconDay"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/day_tempMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_marginTop="60dp"
+        android:id="@+id/day_tempMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/day_iconNight"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/day_textNight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_700"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/day_windScaleNight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/teal_700"/>
+
+    <TextView
+        android:id="@+id/day_windDir"
+        android:layout_marginTop="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/purple_200"/>
+
+    <TextView
+        android:id="@+id/day_hum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"/>
+
+</LinearLayout>
