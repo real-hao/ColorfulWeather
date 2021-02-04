@@ -29,7 +29,7 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="980ac045fec42ee7c843a6d882e730a7" />
+            android:value="key" />
 
         <activity android:name=".WeatherRainfall.RainfallActivity" />
         <activity android:name=".WeatherAir.AirContextActivity" />

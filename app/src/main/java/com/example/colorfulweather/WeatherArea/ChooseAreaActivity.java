@@ -45,7 +45,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class ChooseAreaActivity extends AppCompatActivity {
-    private static final String KEY = "57017d02ec384ceaaafbb0d4a8406866";
+    private static final String KEY = "key";
     public static final String CITY_SERVICE = "https://geoapi.qweather.com/v2/city/lookup?number=20&key="+ KEY +"&location=";
     private static final String HOT_SERVICE = "https://geoapi.qweather.com/v2/city/top?key="+ KEY +"&number=12";
     private static final int UPDATE_LIST = 0;

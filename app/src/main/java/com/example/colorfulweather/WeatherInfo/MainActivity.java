@@ -182,8 +182,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intent, REQUEST_CHOOSE_AREA);
                 });
                 HeConfig.init(
-                        "HE2101261647231428",
-                        "9259105ba23f4f8ab7619f3fc8c9ef14"
+                        "key",
+                        "id"
                 );
                 HeConfig.switchToDevService();
                 getLocation();
