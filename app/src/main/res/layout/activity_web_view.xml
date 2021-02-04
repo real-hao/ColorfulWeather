@@ -5,19 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".WeatherSettings.SettingsActivity">
+    tools:context=".WeatherSettings.WebViewActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/settings_toolBar"
+        android:id="@+id/webToolBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/purple_500"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/settings_view"
-        android:padding="15dp"
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

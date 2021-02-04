@@ -4,11 +4,12 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -17,16 +18,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ColorfulWeather">
-        <service android:name="com.amap.api.location.APSService"></service>
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="980ac045fec42ee7c843a6d882e730a7"></meta-data>
-        <activity android:name=".WeatherRainfall.RainfallActivity"></activity>
+        <service
+            android:name=".WeatherSettings.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".WeatherSettings.WebViewActivity" />
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="980ac045fec42ee7c843a6d882e730a7" />
+
+        <activity android:name=".WeatherRainfall.RainfallActivity" />
         <activity android:name=".WeatherAir.AirContextActivity" />
         <activity android:name=".WeatherDays.DaysContextActivity" />
-        <activity android:name=".WeatherArea.ChooseAreaActivity"/>
+        <activity android:name=".WeatherArea.ChooseAreaActivity" />
         <activity android:name=".WeatherSettings.SettingsActivity" />
         <activity
             android:name=".WeatherInfo.MainActivity"
-            android:theme="@style/MainActivityTheme">
+            android:theme="@style/MainActivityTheme"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

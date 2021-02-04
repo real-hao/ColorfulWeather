@@ -13,6 +13,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ import com.example.colorfulweather.WeatherMore.MoreLayout;
 import com.example.colorfulweather.WeatherMore.WeatherMoreItemLayout;
 import com.example.colorfulweather.WeatherMsg.MsgLayout;
 import com.example.colorfulweather.WeatherRainfall.RainfallActivity;
+import com.example.colorfulweather.WeatherSettings.MyService;
 import com.example.colorfulweather.WeatherSettings.SettingsActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.permissionx.guolindev.PermissionX;
@@ -54,7 +56,6 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.litepal.tablemanager.Connector;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -126,6 +127,18 @@ public class MainActivity extends AppCompatActivity {
                         .setNegativeButton("退出程序", (dialog1, which) -> {
                             finish();
                         });
+                    dialog.show();
+                    return;
+                }
+                LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this)
+                            .setTitle("无法确定您的位置")
+                            .setMessage("Android 9以上可能需要您打开位置信息才能获取位置")
+                            .setCancelable(false)
+                            .setNegativeButton("退出程序", (dialog1, which) -> {
+                                finish();
+                            });
                     dialog.show();
                     return;
                 }
@@ -204,6 +217,11 @@ public class MainActivity extends AppCompatActivity {
                                     JSONArray rootArr = rootObj.getJSONArray("location");
                                     JSONObject object = rootArr.getJSONObject(0);
                                     cityBean = new CityBean(object.getString("id"), object.getString("country"), object.getString("adm1"), object.getString("adm2"), object.getString("name"));
+                                    if(getSharedPreferences("settings", MODE_PRIVATE).getBoolean("showNotification", true)){
+                                        Intent intent = new Intent(MainActivity.this, MyService.class);
+                                        intent.putExtra("data", cityBean);
+                                        startService(intent);
+                                    }
                                     updateFromServer(cityBean, null);
                                     return;
                                 }
@@ -349,6 +367,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.settings:
                 Intent intent = new Intent(this, SettingsActivity.class);
+                intent.putExtra("data", cityBean);
                 startActivity(intent);
                 break;
             case android.R.id.home:
